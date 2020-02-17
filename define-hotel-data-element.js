@@ -35,6 +35,12 @@ templateElt.innerHTML = /*html*/`
       padding: 5px;
       background: #f9f9f9;
     }
+    .description > br {
+      display: none;
+    }
+    .description > p:not(:first-child) {
+      margin-top: 10px;
+    }
     .description.open {
       max-height: none;
       box-shadow: none;
