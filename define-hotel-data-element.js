@@ -9,6 +9,14 @@ templateElt.innerHTML = /*html*/`
       box-shadow: 0 1px 2px rgb(0 0 0 / 0.3);
     }
 
+    .description {
+      max-height: 150px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .description.open {
+      max-height: none;
+    }
     .stars {
       display: inline-flex;
       gap: 2px;
@@ -54,7 +62,11 @@ class HotelData extends HTMLElement {
   connectedCallback() {
     this.shadow.querySelector(".name").textContent = this.getAttribute("name");
     // TODO: sanitise
-    this.shadow.querySelector(".description").innerHTML = this.getAttribute("description");
+    let descriptionElt = this.shadow.querySelector(".description");
+    descriptionElt.innerHTML = this.getAttribute("description");
+    descriptionElt.onclick = e => {
+      descriptionElt.classList.toggle("open");
+    }
     this.shadow.querySelector(".description").innerHTML = this.getAttribute("description");
     this.shadow.querySelector(".currency").textContent = this.getAttribute("price-currency");
     this.shadow.querySelector(".value").textContent = this.getAttribute("price");
@@ -82,9 +94,9 @@ class HotelData extends HTMLElement {
       });
       reviewsElt.append(reviewsFragment);
 
-      reviewSectionElt.addEventListener("click", () => {
+      reviewSectionElt.onclick = () => {
         reviewSectionElt.classList.toggle("open");
-      });
+      };
     } else {
       reviewSectionElt.remove();
     }
