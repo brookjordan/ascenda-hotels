@@ -58,6 +58,16 @@ templateElt.innerHTML = /*html*/`
     .review-section.open .reviews {
       display: block;
     }
+    .reviews-toggle {
+      width: 100%;
+      padding: 5px;
+      margin-top: 10px;
+      background: #ddd;
+      border: 0;
+    }
+    .reviews-toggle:focus:not(:focus-visible) {
+      outline: 0;
+    }
   </style>
   <h2>
     <span class="stars"></span>
@@ -70,7 +80,7 @@ templateElt.innerHTML = /*html*/`
   <div class="description"></div>
   <div class="address"></div>
   <div class="review-section">
-    <h2>Reviews</h2>
+    <button class="reviews-toggle">Toggle <span class="review-count"></span> reviews</button>
     <ul class="reviews"></ul>
   </div>
 `;
@@ -102,9 +112,11 @@ class HotelData extends HTMLElement {
     });
 
     let reviewSectionElt = this.shadow.querySelector(".review-section");
+    let reviewToggleElt = this.shadow.querySelector(".reviews-toggle");
     let reviewsElt = this.shadow.querySelector(".reviews");
     let reviewsFragment = document.createDocumentFragment();
     let reviews = JSON.parse(this.getAttribute("reviews"));
+    this.shadow.querySelector(".review-count").textContent = reviews.length;
     if (reviews.length) {
       reviews.forEach(review => {
         let reviewElt = document.createElement("li");
@@ -117,7 +129,7 @@ class HotelData extends HTMLElement {
       });
       reviewsElt.append(reviewsFragment);
 
-      reviewSectionElt.onclick = () => {
+      reviewToggleElt.onclick = () => {
         reviewSectionElt.classList.toggle("open");
       };
     } else {
