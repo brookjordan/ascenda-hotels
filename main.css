@@ -9,6 +9,10 @@ body {
   margin: 0;
 }
 
+.user-has-no-js .app {
+  display: none;
+}
+
 .hotels {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

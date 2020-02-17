@@ -13,6 +13,7 @@ templateElt.innerHTML = /*html*/`
       max-height: 150px;
       overflow: hidden;
       margin-bottom: 20px;
+      overflow-y: auto;
     }
     .description.open {
       max-height: none;
