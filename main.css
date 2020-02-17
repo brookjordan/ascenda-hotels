@@ -4,14 +4,34 @@
   box-sizing: border-box;
 }
 
+:root {
+  --c-blue: #04a0d1;
+  --c-black: #46525F;
+  --f-heading: "Montserrat", sans-serif;
+  --f-body: "Muli", "Noto Sans CJK JP", sans-serif;
+}
+
 body {
-  background: #eee;
+  background: var(--c-blue);
   padding: 20px;
+  color: white;
+  font-family: var(--f-body);
 }
 
 p, h1, h2, h3, h4, h5, h6,
 body {
   margin: 0;
+}
+
+button,
+input {
+  color: inherit;
+  font: inherit;
+}
+
+h1, h2, h3, h4, h5, h6, button, [type="button"] {
+  font-family: var(--f-heading);
+  font-weight: 600;
 }
 
 .user-has-no-js .app {

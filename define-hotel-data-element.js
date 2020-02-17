@@ -17,12 +17,24 @@ templateElt.innerHTML = /*html*/`
       margin: 0;
     }
 
+    button,
+    input {
+      color: inherit;
+      font: inherit;
+    }
+
+    h1, h2, h3, h4, h5, h6, button, [type="button"] {
+      font-family: var(--f-heading);
+      font-weight: 600;
+    }
+
     :host {
       display: block;
       padding: 10px;
       border-radius: 5px;
       background: white;
       box-shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+      color: var(--c-black);
     }
 
     .description {
