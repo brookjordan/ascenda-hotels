@@ -1,9 +1,25 @@
 let templateElt = document.createElement('template');
 templateElt.innerHTML = /*html*/`
   <style>
+    *,
+    ::before,
+    ::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #eee;
+      padding: 20px;
+    }
+
+    p, h1, h2, h3, h4, h5, h6,
+    body {
+      margin: 0;
+    }
+
     :host {
       display: block;
-      padding: 5px;
+      padding: 10px;
       border-radius: 5px;
       background: white;
       box-shadow: 0 1px 2px rgb(0 0 0 / 0.3);
@@ -12,11 +28,17 @@ templateElt.innerHTML = /*html*/`
     .description {
       max-height: 150px;
       overflow: hidden;
-      margin-bottom: 20px;
+      margin: 10px -5px;
       overflow-y: auto;
+      box-shadow: inset 0 1px 3px rgb(0 0 0 / 0.3);
+      border-radius: 5px;
+      padding: 5px;
+      background: #f9f9f9;
     }
     .description.open {
       max-height: none;
+      box-shadow: none;
+      background: none;
     }
     .stars {
       display: inline-flex;
