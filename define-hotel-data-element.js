@@ -65,7 +65,7 @@ templateElt.innerHTML = /*html*/`
     .stars i {
       width: 20px;
       height: 20px;
-      background: red;
+      background: var(--c-yellow);
     }
     .stars i:not(:first-child) {
       margin-left: 2px;
