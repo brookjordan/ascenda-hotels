@@ -82,6 +82,10 @@ templateElt.innerHTML = /*html*/`
       margin-top: 10px;
       background: #ddd;
       border: 0;
+      border-radius: 4px;
+      -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
     }
     .reviews-toggle:focus:not(:focus-visible) {
       outline: 0;
