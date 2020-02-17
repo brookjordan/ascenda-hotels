@@ -37,6 +37,9 @@ templateElt.innerHTML = /*html*/`
       color: var(--c-black);
     }
 
+    .currency {
+      color: var(--c-gray);
+    }
     .description {
       max-height: 150px;
       overflow: hidden;
