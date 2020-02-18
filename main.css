@@ -83,6 +83,24 @@ input {
   align-items: start;
   margin-top: 20px;
 }
+.hotels:empty {
+  display: block;
+}
+.hotels:empty::before,
+.hotels:empty::after {
+  display: block;
+  text-align: center;
+}
+.hotels:empty::before {
+  content: "No results found";
+  font-family: var(--f-heading);
+  font-size: 24px;
+  font-weight: 600;
+}
+.hotels:empty::after {
+  content: "Update or reset the filters to see more results.";
+  font-family: var(--f-body);
+}
 
 .filter-reset {
   flex-basis: 100%;

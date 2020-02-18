@@ -31,11 +31,16 @@ templateElt.innerHTML = /*html*/`
     :host {
       display: inline-block;
     }
+
+    span {
+      font-variant-numeric: lining-nums;
+    }
   </style>
 
   <label>
-    <slot></slot>: <span></span>
+    <slot></slot>:
     <input type="range">
+    <span></span>
   </label>
 `;
 
