@@ -48,6 +48,9 @@ templateElt.innerHTML = /*html*/`
 
     .currency {
       color: var(--c-gray);
+      font-size: 0.8em;
+      margin-right: 0.1em;
+      font-weight: 400;
     }
     .description {
       max-height: 150px;
