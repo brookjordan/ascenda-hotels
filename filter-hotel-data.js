@@ -15,12 +15,13 @@ nameSearch.oninput = updateHotelDisplay;
 let priceSort = document.querySelector(".price-sort");
 priceSort.onchange = updateHotelDisplay;
 
-let filterReset = document.querySelector(".filter-reset");
-filterReset.onclick = () => {
+let form = document.querySelector("form");
+form.onreset = () => {
+  ratingFilter.reset();
+  starFilter.reset();
+  priceFilter.reset();
+  // timeout to ensure inputs are updated before reading values
   setTimeout(() => {
-    ratingFilter.reset();
-    starFilter.reset();
-    priceFilter.reset();
     updateHotelDisplay();
   }, 0);
 }
