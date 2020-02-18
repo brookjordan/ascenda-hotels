@@ -65,16 +65,19 @@ templateElt.innerHTML = /*html*/`
       display: inline-flex;
       gap: 2px;
     }
-    .stars i {
+    .stars svg {
       width: 20px;
       height: 20px;
-      background: var(--c-yellow);
+      fill: var(--c-yellow);
     }
     .stars i:not(:first-child) {
       margin-left: 2px;
     }
     .reviews {
       display: none;
+    }
+    .reviews > li:not(:first-child) {
+      margin-top: 15px;
     }
     .review-section.open .reviews {
       display: block;
@@ -83,7 +86,7 @@ templateElt.innerHTML = /*html*/`
       width: 100%;
       padding: 5px;
       margin-top: 10px;
-      background: #ddd;
+      background: var(--c-gray);
       border: 0;
       border-radius: 4px;
       -webkit-appearance: none;
@@ -94,6 +97,7 @@ templateElt.innerHTML = /*html*/`
       outline: 0;
     }
   </style>
+
   <h2>
     <span class="stars"></span>
     <span class="name"></span>
@@ -103,6 +107,7 @@ templateElt.innerHTML = /*html*/`
 
   <span class="rating"></span>
   <div class="description"></div>
+  <h3>Address:</h3>
   <div class="address"></div>
   <div class="review-section">
     <button class="reviews-toggle">Toggle <span class="review-count"></span> reviews</button>

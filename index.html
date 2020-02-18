@@ -12,22 +12,53 @@
   <script>document.body.classList.remove("user-has-no-js")</script>
 
   <div class="app">
-    <div class="filters">
-      <label>
-        Rating
-        <input value="0" type="range" class="rating-filter" min="0" max="10">
-      </label>
+    <form class="customise">
+      <div class="searches">
+        <h2>Search by:</h2>
+        <label>
+          Name
+          <input class="name-search">
+        </label>
+      </div>
 
-      <label>
-        Stars
-        <input value="1" type="range" class="star-filter" min="1" max="5">
-      </label>
+      <div class="filters">
+        <h2>Filter by:</h2>
+        <range-input
+          value="0"
+          min="0"
+          max="10"
+          class="rating-filter"
+        >Min rating</range-input>
 
-      <label>
-        Price
-        <input value="900" type="range" class="price-filter" min="100" max="900">
-      </label>
-    </div>
+        <range-input
+          value="1"
+          min="1"
+          max="5"
+          class="star-filter"
+        >Min stars</range-input>
+
+        <range-input
+          value="900"
+          min="100"
+          max="900"
+          class="price-filter"
+        >Max price</range-input>
+      </div>
+
+      <div class="sorts">
+        <h2>Sort by:</h2>
+        <label>
+          Price
+          <select class="price-sort">
+            <option label="No" value="none">
+            <option label="Cheap first" value="ascending">
+            <option label="Expensive first" value="descending">
+          </select>
+        </label>
+      </div>
+
+      <input class="filter-reset" type="reset" value="Reset filters">
+    </form>
 
     <div class="hotels">
       <h2>Loading…</h2>

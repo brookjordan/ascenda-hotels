@@ -23,7 +23,7 @@ class HotelData extends HTMLElement {
 
     let starsElt = this.shadow.querySelector(".stars");
     Array.from({ length: +this.getAttribute("stars") }, () => null).forEach(() => {
-      starsElt.appendChild(document.createElement("i"));
+      starsElt.innerHTML += '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98 98"><path d="M49 0L20 98l79-58-99-0 80 58z"/></svg>';
     });
 
     let reviewSectionElt = this.shadow.querySelector(".review-section");

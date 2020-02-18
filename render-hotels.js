@@ -1,4 +1,4 @@
-import emptyElement from "./empty-element.js";
+import emptyElement from "./helpers/empty-element.js";
 
 let hotelsElement = document.querySelector(".hotels");
 
