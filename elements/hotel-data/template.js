@@ -29,12 +29,21 @@ templateElt.innerHTML = /*html*/`
     }
 
     :host {
-      display: block;
+      display: flex;
+      flex-direction: column;
       padding: 10px;
       border-radius: 5px;
       background: white;
       box-shadow: 0 1px 2px rgb(0 0 0 / 0.3);
       color: var(--c-black);
+    }
+
+    img {
+      height: 200px;
+      margin: 10px 0;
+      object-fit: cover;
+      object-position: 50% 50%;
+      border-radius: 4px;
     }
 
     .currency {
@@ -104,6 +113,8 @@ templateElt.innerHTML = /*html*/`
     -
     <span class="currency"></span><span class="value"></span>
   </h2>
+
+  <img>
 
   <span class="rating"></span>
   <div class="description"></div>

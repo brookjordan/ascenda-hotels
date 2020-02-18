@@ -16,6 +16,7 @@ class HotelData extends HTMLElement {
       descriptionElt.classList.toggle("open");
     }
     this.shadow.querySelector(".description").innerHTML = this.getAttribute("description");
+    this.shadow.querySelector("img").src = this.getAttribute("photo");
     this.shadow.querySelector(".currency").textContent = this.getAttribute("price-currency");
     this.shadow.querySelector(".value").textContent = this.getAttribute("price");
     this.shadow.querySelector(".address").innerHTML = this.getAttribute("address").split(",").join("<br>");
