@@ -1,31 +1,39 @@
 import updateHotelDisplay from "./update-hotel-display.js";
 
 let previousHotelsData = {};
+let ratingFilter;
+let starFilter;
+let priceFilter;
+let nameSearch;
+let priceSort;
+let form;
 
-let ratingFilter = document.querySelector(".rating-filter");
-ratingFilter.oninput = updateHotelDisplay;
+export function initFilterElements() {
+  ratingFilter = document.querySelector(".rating-filter");
+  ratingFilter.oninput = updateHotelDisplay;
 
-let starFilter = document.querySelector(".star-filter");
-starFilter.oninput = updateHotelDisplay;
+  starFilter = document.querySelector(".star-filter");
+  starFilter.oninput = updateHotelDisplay;
 
-let priceFilter = document.querySelector(".price-filter");
-priceFilter.oninput = updateHotelDisplay;
+  priceFilter = document.querySelector(".price-filter");
+  priceFilter.oninput = updateHotelDisplay;
 
-let nameSearch = document.querySelector(".name-search");
-nameSearch.oninput = updateHotelDisplay;
+  nameSearch = document.querySelector(".name-search");
+  nameSearch.oninput = updateHotelDisplay;
 
-let priceSort = document.querySelector(".price-sort");
-priceSort.onchange = updateHotelDisplay;
+  priceSort = document.querySelector(".price-sort");
+  priceSort.onchange = updateHotelDisplay;
 
-let form = document.querySelector("form");
-form.onreset = () => {
-  ratingFilter.reset();
-  starFilter.reset();
-  priceFilter.reset();
-  // timeout to ensure inputs are updated before reading values
-  setTimeout(() => {
-    updateHotelDisplay();
-  }, 0);
+  form = document.querySelector("form");
+  form.onreset = () => {
+    ratingFilter.reset();
+    starFilter.reset();
+    priceFilter.reset();
+    // timeout to ensure inputs are updated before reading values
+    setTimeout(() => {
+      updateHotelDisplay();
+    }, 0);
+  }
 }
 
 // TODO: be better locale aware
@@ -35,34 +43,31 @@ function updateFilterValues(hotelsData) {
   let hotelRatings = hotelsData.map(hotelData => hotelData.rating);
   let minRating = Math.min(...hotelRatings);
   let maxRating = Math.max(...hotelRatings);
+  ratingFilter.setAttribute("min", minRating);
+  ratingFilter.setAttribute("max", maxRating);
 
   let hotelStars = hotelsData.map(hotelData => hotelData.stars);
   let minStars = Math.min(...hotelStars);
   let maxStars = Math.max(...hotelStars);
+  starFilter.setAttribute("min", minStars);
+  starFilter.setAttribute("max", maxStars);
 
   let hotelPrices = hotelsData.map(hotelData => hotelData.price);
   let minPrice = Math.min(...hotelPrices);
   let maxPrice = Math.max(...hotelPrices);
-
-  ratingFilter.setAttribute("min", minRating);
-  ratingFilter.setAttribute("max", maxRating);
-  starFilter.setAttribute("min", minStars);
-  starFilter.setAttribute("max", maxStars);
   priceFilter.setAttribute("min", minPrice);
   priceFilter.setAttribute("max", maxPrice);
 }
 
-export default function(hotelsData) {
-  let minRating = +ratingFilter.value;
-  let minStars = +starFilter.value;
-  let maxPrice = +priceFilter.value;
-  let nameIncludes = simplifyString(nameSearch.value);
-  let priceSortOrder = priceSort.value;
-
-  if (previousHotelsData !== hotelsData) {
-    updateFilterValues(hotelsData);
-    previousHotelsData = hotelsData;
-  }
+export function filterHotelData({
+  hotelsData = [],
+  minStars = 0,
+  maxPrice = 9e99,
+  minRating = 0,
+  nameSearchTerm = "",
+  priceSortOrder = "none",
+}) {
+  let nameIncludes = simplifyString(nameSearchTerm);
 
   let filteredHotelsData = hotelsData
     .filter(({ stars }) => stars >= minStars)
@@ -82,4 +87,26 @@ export default function(hotelsData) {
         }
       })
   }
+}
+
+export function getFilteredHotelData(hotelsData) {
+  let minRating = +ratingFilter.value;
+  let minStars = +starFilter.value;
+  let maxPrice = +priceFilter.value;
+  let priceSortOrder = priceSort.value;
+  let nameSearchTerm = nameSearch.value;
+
+  if (previousHotelsData !== hotelsData) {
+    updateFilterValues(hotelsData);
+    previousHotelsData = hotelsData;
+  }
+
+  return filterHotelData({
+    hotelsData,
+    minStars,
+    maxPrice,
+    minRating,
+    nameSearchTerm,
+    priceSortOrder,
+  });
 }
