@@ -98,7 +98,8 @@ templateElt.innerHTML = /*html*/`
       width: 100%;
       padding: 5px;
       margin-top: 10px;
-      background: var(--c-gray);
+      background: var(--c-blue);
+      color: white;
       border: 0;
       border-radius: 4px;
       -webkit-appearance: none;

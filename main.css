@@ -111,7 +111,7 @@ input {
   padding: 5px;
   border: 0;
   margin-top: 10px;
-  background: var(--c-gray);
+  background: white;
   border-radius: 4px;
   -webkit-appearance: none;
   -moz-appearance: none;
